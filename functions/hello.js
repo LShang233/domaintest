@@ -11,8 +11,16 @@ exports.handler = async function (event, context, callback) {
   //   statusCode: 200,
   //   body: event.httpMethod + "Hello World"
   // })
-  return {
-    statusCode: 200,
-    body: JSON.stringify({ message: "Hello World" }),
-  };
+  if(event.httpMethod == 'POST') {
+    return {
+      statusCode: 200,
+      body: JSON.stringify({ message: "Hello World" }),
+    };
+  }
+  else {
+    callback(null, {
+      statusCode: 200,
+      body: event.httpMethod + ": Hello World"
+    })
+  }
 }
