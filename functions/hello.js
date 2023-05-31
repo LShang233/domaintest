@@ -1,7 +1,18 @@
 // hello.js
-exports.handler = function (event, context, callback) {
-  callback(null, {
+exports.handler = async function (event, context, callback) {
+  // if (event.httpMethod !== 'POST') {
+  //   return {
+  //       statusCode: 501,
+  //       body: JSON.stringify({ message: "Not Implemented" }),
+  //       headers: { 'content-type': 'application/json' }
+  //   }
+  // }
+  // callback(null, {
+  //   statusCode: 200,
+  //   body: event.httpMethod + "Hello World"
+  // })
+  return {
     statusCode: 200,
-    body: "Hello World"
-  })
+    body: JSON.stringify({ message: "Hello World" }),
+  };
 }
